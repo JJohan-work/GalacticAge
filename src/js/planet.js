@@ -3,7 +3,7 @@ import { parse } from "@babel/core";
 export default class Planet {
   constructor(year,month,day,test=false) {
     let n = 0;
-    if (test) {n = new Date(2021,5,2);} //sets current date as a static value for jest testing
+    if (test) {n = new Date(2021,2,5);} //sets current date as a static value for jest testing
     else {n = new Date();} //sets current date as current date for normal operation
     this.currentYear = n.getFullYear();
     this.birthday = new Date(year,month,day);
