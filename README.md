@@ -1,17 +1,18 @@
-# (Blank Template)
+# Galactic Age Calculator
 
-#### (Brief Description of Application)
+#### See how old you are on other planets. Epicodus Week 5 Project
 
-#### By (Your Name Here)
+#### By Jonah Johansen
 
 ## Technologies Used
 
-* _List all_
-* _the major technologies_
-* _you used in your project_
-* _here_
+* _Git_
+* _Github_
+* _Node and Node Package Manager_
+* __
 
 ## Description
+This program takes your birthdate on Earth and converts it to your age on other planets in the solar system.This project uses TDD and an enviroment built with npm, jest, and webpack
 
 ## Setup/Installation Requirements
 
