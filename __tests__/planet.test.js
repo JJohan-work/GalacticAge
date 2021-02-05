@@ -12,9 +12,7 @@ describe('Planets', () => {
     let date = new Date(1999,8,19);
     expect(planet.currentYear).toEqual(2021);
     expect(planet.birthday).toEqual(date);
-    expect(planet.years).toEqual(21);
-    expect(planet.planetAge).toEqual(0);
-    expect(planet.planetNext).toEqual(0);
+    expect(planet.years).toEqual(21.3591);
   });
   test("Should set currentYear to equal the current year when the test flag is set to false", () => {
     let planet1 = new Planet(1999,5,24);
@@ -30,9 +28,15 @@ describe('Planets', () => {
     let planet3 = new Planet(1999,1,1,true);
     expect(planet3.daysSince).toEqual(32);
   });
-  test('should set planetAge and planetNext to age on planet Mercury and next birthday on Mercury in Earth date', () => {
-    planet.mercury();
-    expect(planet.planetAge).toEqual();
-    expect(planet.planetNext).toEqual();
+  test('should convert age to age on a given planet', () => {
+    expect(planet.convertAge("mercury")).toEqual(88.68);
+    expect(planet.convertAge("venus")).toEqual(34.72);
+    expect(planet.convertAge("earth")).toEqual(21.36);
+    expect(planet.convertAge("mars")).toEqual(11.36);
+    expect(planet.convertAge("jupiter")).toEqual(1.8);
+    expect(planet.convertAge("saturn")).toEqual(0.73);
+    expect(planet.convertAge("uranus")).toEqual(0.25);
+    expect(planet.convertAge("neptune")).toEqual(0.13);
+    expect(planet.convertAge("pluto")).toEqual(0.09);
   })
 });
