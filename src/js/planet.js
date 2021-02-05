@@ -2,7 +2,7 @@ import { parse } from "@babel/core";
 
 export default class Planet {
   constructor(year,month,day,test=false) {
-    this.yearCycle = {"mercury":87.97,"venus":224.7,"earth":365.25,"mars":686.67,"jupiter":4331.865,"saturn":10760.265,"uranus":30684.6525,"neptune":60189.5475,"pluto":90797.4975}
+    this.yearCycle = {"mercury":87.97,"venus":224.7,"earth":365.25,"mars":686.97,"jupiter":4332.82012875,"saturn":10759.265,"uranus":30688.48762,"neptune":60190}
 
     let n = 0;
     if (test) {n = new Date(2021,2,5);} //sets current date as a static value for jest testing
@@ -21,8 +21,12 @@ export default class Planet {
     return parseFloat(((this.years * 365.25) / this.yearCycle[planet]).toFixed(2));
   }
 
-  // convertNext(planet) {
-
-  // }
+  convertNext(planet) {
+    //convert birthday into epoch time
+    let nextBirthday = ((parseInt(this.convertAge(planet))+1) * this.yearCycle[planet]) * (1000*60*60*24);
+    let dateWithTime = new Date(this.birthday.getTime() + nextBirthday);
+    return new Date(dateWithTime.getFullYear(),dateWithTime.getMonth(),dateWithTime.getDate());
+    //return date of next birthday
+  }
 
 }

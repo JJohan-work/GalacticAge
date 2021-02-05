@@ -37,6 +37,23 @@ describe('Planets', () => {
     expect(planet.convertAge("saturn")).toEqual(0.73);
     expect(planet.convertAge("uranus")).toEqual(0.25);
     expect(planet.convertAge("neptune")).toEqual(0.13);
-    expect(planet.convertAge("pluto")).toEqual(0.09);
+  })
+  test('should find next earth date of birthday on a given planet', () => {
+    let date1 = new Date(2021,1,24);
+    let date2 = new Date(2021,2,31);
+    let date3 = new Date(2021,8,18);
+    let date4 = new Date(2022,3,14);
+    let date5 = new Date(2023,5,10);
+    let date6 = new Date(2029,2,4);
+    let date7 = new Date(2083,8,26);
+    let date8 = new Date(2164,6,5);
+    expect(planet.convertNext("mercury")).toEqual(date1);
+    expect(planet.convertNext("venus")).toEqual(date2);
+    expect(planet.convertNext("earth")).toEqual(date3);
+    expect(planet.convertNext("mars")).toEqual(date4);
+    expect(planet.convertNext("jupiter")).toEqual(date5);
+    expect(planet.convertNext("saturn")).toEqual(date6);
+    expect(planet.convertNext("uranus")).toEqual(date7);
+    expect(planet.convertNext("neptune")).toEqual(date8);
   })
 });
