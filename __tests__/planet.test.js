@@ -13,6 +13,7 @@ describe('Planets', () => {
     expect(planet.currentYear).toEqual(2021);
     expect(planet.birthday).toEqual(date);
     expect(planet.years).toEqual(21.3591);
+    expect(planet.lifeExpectancy).toEqual(76);
   });
   test("Should set currentYear to equal the current year when the test flag is set to false", () => {
     let planet1 = new Planet(1999,5,24);

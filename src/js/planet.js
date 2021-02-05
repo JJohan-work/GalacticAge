@@ -15,6 +15,7 @@ export default class Planet {
     let check2 = (check - n > 0 ? this.currentYear-1 : this.currentYear)
     let lastbirthday = new Date(check2,month,day);
     this.daysSince = parseInt((n - lastbirthday) / (1000*60*60*24));
+    this.lifeExpectancy = parseInt(-774.7337 + (76.49417 - -774.7337)/(1 + (this.years/888.1863)^0.988497));
   }
 
   convertAge(planet) {
@@ -23,10 +24,10 @@ export default class Planet {
 
   convertNext(planet) {
     //convert birthday into epoch time
-    let nextBirthday = ((parseInt(this.convertAge(planet))+1) * this.yearCycle[planet]) * (1000*60*60*24);
-    let dateWithTime = new Date(this.birthday.getTime() + nextBirthday);
-    return new Date(dateWithTime.getFullYear(),dateWithTime.getMonth(),dateWithTime.getDate());
-    //return date of next birthday
+    let nextBirthday = ((parseInt(this.convertAge(planet))+1) * this.yearCycle[planet]) * (1000*60*60*24); //calculates in milliseconds time from birth to next birthday on planet
+    let dateWithTime = new Date(this.birthday.getTime() + nextBirthday); //
+    return new Date(dateWithTime.getFullYear(),dateWithTime.getMonth(),dateWithTime.getDate()); //stripes datewithTime of its timestamp
   }
 
+  
 }
