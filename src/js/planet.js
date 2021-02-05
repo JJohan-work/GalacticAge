@@ -18,7 +18,7 @@ export default class Planet {
   }
 
   convertAge(planet) {
-
+    return parseFloat(((this.years * 365.25) / this.yearCycle[planet]).toFixed(2));
   }
 
   // convertNext(planet) {
