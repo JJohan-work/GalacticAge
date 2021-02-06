@@ -15,7 +15,7 @@ export default class Planet {
     let check2 = (check - n > 0 ? this.currentYear-1 : this.currentYear)
     let lastbirthday = new Date(check2,month,day);
     this.daysSince = parseInt((n - lastbirthday) / (1000*60*60*24));
-    this.lifeExpectancy = parseInt(-774.7337 + (76.49417 - -774.7337)/(1 + (this.years/888.1863)^0.988497));
+    this.lifeExpectancy = parseInt(857315.91+(76.46281 - 2571795)/(1 + (this.years/21345.65)^2.236845))
   }
 
   convertAge(planet) {
@@ -28,6 +28,10 @@ export default class Planet {
     let dateWithTime = new Date(this.birthday.getTime() + nextBirthday); //
     return new Date(dateWithTime.getFullYear(),dateWithTime.getMonth(),dateWithTime.getDate()); //stripes datewithTime of its timestamp
   }
-
-  
+  testfunction() {
+    return "this worked";
+  }
+  life() {
+    return true;
+  }
 }
