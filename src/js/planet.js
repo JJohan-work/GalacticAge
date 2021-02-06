@@ -2,7 +2,8 @@ import { parse } from "@babel/core";
 
 export default class Planet {
   constructor(year,month,day,test=false) {
-    this.yearCycle = {"mercury":87.97,"venus":224.7,"earth":365.25,"mars":686.97,"jupiter":4332.82012875,"saturn":10759.265,"uranus":30688.48762,"neptune":60190}
+    this.yearCycle = {"mercury":87.97,"venus":224.7,"earth":365.25,"mars":686.97,"jupiter":4332.82012875,"saturn":10759.265,"uranus":30688.48762,"neptune":60190};
+    this.belongTo = {"mercury":"mercurian","venus":"venusian","earth":"earthen","mars":"martian","jupiter":"jovian","saturn":"saturnian","uranus":"uranian","neptune":"neptunian"};
 
     let n = 0;
     if (test) {n = new Date(2021,2,5);} //sets current date as a static value for jest testing
@@ -25,13 +26,12 @@ export default class Planet {
   convertNext(planet) {
     //convert birthday into epoch time
     let nextBirthday = ((parseInt(this.convertAge(planet))+1) * this.yearCycle[planet]) * (1000*60*60*24); //calculates in milliseconds time from birth to next birthday on planet
-    let dateWithTime = new Date(this.birthday.getTime() + nextBirthday); //
+    let dateWithTime = new Date(this.birthday.getTime() + nextBirthday);
     return new Date(dateWithTime.getFullYear(),dateWithTime.getMonth(),dateWithTime.getDate()); //stripes datewithTime of its timestamp
   }
-  testfunction() {
-    return "this worked";
-  }
-  life() {
-    return true;
+
+  life(planet) {
+
+    return `You are expected to live for ${this.lifeExpectancy} earth years. If you lived on ${planet} you would be ${this.lifeExpectancy-this.convertAge(planet)>0 ? `${this.lifeExpectancy-this.convertAge(planet)} ${this.belongTo[planet]} years over` : `${this.convertAge(planet)-this.lifeExpectancy} ${this.belongTo[planet]} years under`} your earth life expectancy. `
   }
 }

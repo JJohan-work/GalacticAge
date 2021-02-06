@@ -58,7 +58,7 @@ describe('Planets', () => {
     expect(planet.convertNext("neptune")).toEqual(date8);
   })
 test("should return a sentence describing life expectancy and if given age is older or younger then the earth life expectancy on a given planet", () => {
-    expect(planet.life()).toEqual("You are expected to live for 76 earth years. If you lived on mercury you would be 11.68 years older then your earth counterpart");
+    expect(planet.life("mercury")).toEqual("You are expected to live for 76 earth years. If you lived on mercury you would be 11.68 years older then your earth counterpart");
   })
 
 });
