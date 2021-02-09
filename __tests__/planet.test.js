@@ -59,7 +59,7 @@ describe('Planets', () => {
   })
     test('should save estimated lifespan of user based on age and planet', () => {
       planet.getlifespan("mercury")
-      expect(planet.planetAge).toEqual(200);
+      expect(planet.planetAge).toEqual(315.55);
     })
 
 });

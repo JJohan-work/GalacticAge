@@ -29,9 +29,10 @@ export default class Planet {
     //convert birthday into epoch time
     let nextBirthday = ((parseInt(this.convertAge(planet))+1) * this.yearCycle[planet]) * (1000*60*60*24); //calculates in milliseconds time from birth to next birthday on planet
     let dateWithTime = new Date(this.birthday.getTime() + nextBirthday);
-    return new Date(dateWithTime.getFullYear(),dateWithTime.getMonth(),dateWithTime.getDate()); //stripes datewithTime of its timestamp
+    this.nextPlanetBirth = new Date(dateWithTime.getFullYear(),dateWithTime.getMonth(),dateWithTime.getDate());
+    return this.nextPlanetBirth //stripes datewithTime of its timestamp
   }
   getlifespan(planet) {
-    
+    this.planetAge = this.convertAge(planet,this.lifeExpectancy);
   }
 }
