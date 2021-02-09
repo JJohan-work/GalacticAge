@@ -37,7 +37,7 @@ export default class Planet {
     this.planetAge = this.convertAge(planet,this.lifeExpectancy);
   }
 
-  getTimeLeft() {
-    return "test text";
+  getTimeLeft(planet) {
+    return this.planetAge - this.convertAge(planet);
   }
 }
