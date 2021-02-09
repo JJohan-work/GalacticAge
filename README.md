@@ -20,15 +20,22 @@
 This program takes your birthdate on Earth and converts it to your age on other planets in the solar system.This project uses TDD and an enviroment built with npm, jest, and webpack
 
 ## Setup/Installation Requirements
-
-
+* Download or clone repository
+* Open repo and run ```npm install```
+* run ```npm run build``` to build to dist
+* open in dist/index.html
 
 * * *
 ## Known Bugs
 
-* _Any known issues_
-* _should go here_
+* _No user interface currently exists and project can currently not be run in browser_
 
-## License
+## License:
+> *&copy; Jonah Johansen, 2021*
+
+Licensed under [MIT license](https://mit-license.org/)
+
+* * *
 
 ## Contact Information
+_Jonah Johansen: [Email](johansenjonah+git@gmail.com)_
