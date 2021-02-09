@@ -5,7 +5,7 @@ export default class Planet {
 
     let n = 0;
     if (test) {n = new Date(2021,2,5);} //sets current date as a static value for jest testing
-    else {n = new Date();} //sets current date as current date for normal operation
+    else {n = new Date();} //sets current date as date at runtime for normal operation
     this.currentYear = n.getFullYear();
     this.birthday = new Date(year,month,day);
     this.years = parseFloat(((n - this.birthday) * 0.00000000003154).toFixed(4));
@@ -26,9 +26,5 @@ export default class Planet {
     let nextBirthday = ((parseInt(this.convertAge(planet))+1) * this.yearCycle[planet]) * (1000*60*60*24); //calculates in milliseconds time from birth to next birthday on planet
     let dateWithTime = new Date(this.birthday.getTime() + nextBirthday);
     return new Date(dateWithTime.getFullYear(),dateWithTime.getMonth(),dateWithTime.getDate()); //stripes datewithTime of its timestamp
-  }
-
-  life(planet) {
-    return `You are expected to live for ${this.lifeExpectancy} earth years. If you lived on ${planet} you would be ${this.convertAge(planet,this.lifeExpectancy)-this.convertAge(planet)>0 ? `${(this.convertAge(planet,this.lifeExpectancy)-this.convertAge(planet)).toFixed(1)} ${this.belongTo[planet]} years over` : `${(this.convertAge(planet,this.convertAge(planet))-this.lifeExpectancy).toFixed(1)} ${this.belongTo[planet]} years under`} your earth life expectancy.`;
   }
 }

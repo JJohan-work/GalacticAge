@@ -57,15 +57,6 @@ describe('Planets', () => {
     expect(planet.convertNext("uranus")).toEqual(date7);
     expect(planet.convertNext("neptune")).toEqual(date8);
   })
-test("should return a sentence describing life expectancy and if given age is older or younger then the earth life expectancy on a given planet", () => {
-    expect(planet.life("mercury")).toEqual(`You are expected to live for 76 earth years. If you lived on mercury you would be 12.7 mercurian years under your earth life expectancy.`);
-    expect(planet.life("venus")).toEqual(`You are expected to live for 76 earth years. If you lived on mercury you would be 12.7 mercurian years under your earth life expectancy.`);
-    expect(planet.life("earth")).toEqual(`You are expected to live for 76 earth years. If you lived on mercury you would be 12.7 mercurian years under your earth life expectancy.`);
-    expect(planet.life("mars")).toEqual(`You are expected to live for 76 earth years. If you lived on mercury you would be 12.7 mercurian years under your earth life expectancy.`);
-    expect(planet.life("jupiter")).toEqual(`You are expected to live for 76 earth years. If you lived on mercury you would be 12.7 mercurian years under your earth life expectancy.`);
-    expect(planet.life("saturn")).toEqual(`You are expected to live for 76 earth years. If you lived on mercury you would be 12.7 mercurian years under your earth life expectancy.`);
-    expect(planet.life("uranus")).toEqual(`You are expected to live for 76 earth years. If you lived on mercury you would be 12.7 mercurian years under your earth life expectancy.`);
-    expect(planet.life("neptune")).toEqual(`You are expected to live for 76 earth years. If you lived on neptune you would be 75.9 neptunian years over your earth life expectancy.`);
-  })
+
 
 });
