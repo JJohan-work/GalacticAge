@@ -64,6 +64,10 @@ describe('Planets', () => {
     test('should return the years left to live on a planet based on the estimated lifespan and the current age, can only be called after getting getLifeSpan', () => {
       planet.getLifeSpan("mercury");
       expect(planet.getTimeLeft("mercury")).toEqual(226.87);
+      planet.getLifeSpan("earth");
+      expect(planet.getTimeLeft("earth")).toEqual(54.64);
+      planet.getLifeSpan("saturn");
+      expect(planet.getTimeLeft("saturn")).toEqual(1.85);
     })
 
 });
