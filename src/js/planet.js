@@ -32,7 +32,12 @@ export default class Planet {
     this.nextPlanetBirth = new Date(dateWithTime.getFullYear(),dateWithTime.getMonth(),dateWithTime.getDate());
     return this.nextPlanetBirth //stripes datewithTime of its timestamp
   }
-  getlifespan(planet) {
+
+  getLifeSpan(planet) {
     this.planetAge = this.convertAge(planet,this.lifeExpectancy);
+  }
+
+  getTimeLeft() {
+    return "test text";
   }
 }

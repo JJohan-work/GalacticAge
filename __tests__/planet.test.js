@@ -58,8 +58,11 @@ describe('Planets', () => {
     expect(planet.convertNext("neptune")).toEqual(date8);
   })
     test('should save estimated lifespan of user based on age and planet', () => {
-      planet.getlifespan("mercury")
+      planet.getLifeSpan("mercury")
       expect(planet.planetAge).toEqual(315.55);
+    })
+    test('should return the years left to live on a planet based on the estimated lifespan and the current age', () => {
+      expect(planet.getTimeLeft()).toEqual(226.87);
     })
 
 });
