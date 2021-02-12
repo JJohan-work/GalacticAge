@@ -26,7 +26,6 @@ export default class Planet {
     this.birthday = new Date(year,month,day);
     this.years = parseFloat(((this.now - this.birthday) * 0.00000000003154).toFixed(4));
     this.lifeExpectancy = parseInt(857315.91+(76.46281 - 2571795)/(1 + (this.years/21345.65)^2.236845));
-    this.nextPlanetBirth;
   }
 
   getCurrentTime(test) {
@@ -40,7 +39,6 @@ export default class Planet {
     return date.getFullYear();
   }
 
-
   convertAge(planet,age=this.years) {
     return parseFloat(((age * 365.25) / this.yearCycle[planet]).toFixed(2));
   }
@@ -49,15 +47,18 @@ export default class Planet {
     //convert birthday into epoch time
     let nextBirthday = ((parseInt(this.convertAge(planet))+1) * this.yearCycle[planet]) * (1000*60*60*24); //calculates in milliseconds time from birth to next birthday on planet
     let dateWithTime = new Date(this.birthday.getTime() + nextBirthday);
-    this.nextPlanetBirth = new Date(dateWithTime.getFullYear(),dateWithTime.getMonth(),dateWithTime.getDate());
-    return this.nextPlanetBirth //strips datewithTime of its timestamp
+    return new Date(dateWithTime.getFullYear(),dateWithTime.getMonth(),dateWithTime.getDate());
   }
 
   getLifeSpan(planet) {
-    return this.convertAge(planet,this.lifeExpectancy);
+    return parseFloat(this.convertAge(planet,this.lifeExpectancy).toFixed(2));
   }
 
   getTimeLeft(planet) {
-    return this.getLifeSpan(planet) - this.convertAge(planet);
+    if ((this.getLifeSpan(planet) - this.convertAge(planet)) > 0) {
+      return [parseFloat((this.getLifeSpan(planet) - this.convertAge(planet)).toFixed(2)),false];
+    } else {
+      return [parseFloat((this.convertAge(planet) - this.getLifeSpan(planet)).toFixed(2)),true];
+    }
   }
 }

@@ -86,29 +86,37 @@ describe('Planets', () => {
     expect(planet.getNextBirthday("neptune")).toEqual(date);
   })
 
-  test('should return the years left to live on mercury based on the estimated lifespan and the current age, can only be called after getting getLifeSpan', () => {
-    expect(planet.getTimeLeft("mercury")).toEqual(226.87);
+  test('should return the years left to live on mercury based on the estimated lifespan and the current age', () => {
+    expect(planet.getTimeLeft("mercury")).toEqual([226.87,false]);
   })
-  test('should return the years left to live on venus based on the estimated lifespan and the current age, can only be called after getting getLifeSpan', () => {
-    expect(planet.getTimeLeft("venus")).toEqual(1.85);
+  test('should return the years left to live on venus based on the estimated lifespan and the current age', () => {
+    expect(planet.getTimeLeft("venus")).toEqual([88.82,false]);
   })
-  test('should return the years left to live on earth based on the estimated lifespan and the current age, can only be called after getting getLifeSpan', () => {
-    expect(planet.getTimeLeft("earth")).toEqual(54.64);
+  test('should return the years left to live on earth based on the estimated lifespan and the current age', () => {
+    expect(planet.getTimeLeft("earth")).toEqual([54.64,false]);
   })
-  test('should return the years left to live on mars based on the estimated lifespan and the current age, can only be called after getting getLifeSpan', () => {
-    expect(planet.getTimeLeft("mars")).toEqual(1.85);
+  test('should return the years left to live on mars based on the estimated lifespan and the current age', () => {
+    expect(planet.getTimeLeft("mars")).toEqual([29.05,false]);
   })
-  test('should return the years left to live on jupiter based on the estimated lifespan and the current age, can only be called after getting getLifeSpan', () => {
-    expect(planet.getTimeLeft("jupiter")).toEqual(1.85);
+  test('should return the years left to live on jupiter based on the estimated lifespan and the current age', () => {
+    expect(planet.getTimeLeft("jupiter")).toEqual([4.61,false]);
   })
-  test('should return the years left to live on saturn based on the estimated lifespan and the current age, can only be called after getting getLifeSpan', () => {
-    expect(planet.getTimeLeft("saturn")).toEqual(1.85);
+  test('should return the years left to live on saturn based on the estimated lifespan and the current age', () => {
+    expect(planet.getTimeLeft("saturn")).toEqual([1.85,false]);
   })
-  test('should return the years left to live on uranus based on the estimated lifespan and the current age, can only be called after getting getLifeSpan', () => {
-    expect(planet.getTimeLeft("uranus")).toEqual(1.85);
+  test('should return the years left to live on uranus based on the estimated lifespan and the current age', () => {
+    expect(planet.getTimeLeft("uranus")).toEqual([0.65,false]);
   })
-  test('should return the years left to live on neptune based on the estimated lifespan and the current age, can only be called after getting getLifeSpan', () => {
-    expect(planet.getTimeLeft("neptune")).toEqual(1.85);
+  test('should return the years left to live on neptune based on the estimated lifespan and the current age', () => {
+    expect(planet.getTimeLeft("neptune")).toEqual([0.33,false]);
+  })
+   test('should return the years past the livespan on mercury based on the estimated lifespan and the current age', () => {
+    let oldplanet = new Planet(1904,8,19,true);
+    expect(oldplanet.getTimeLeft("mercury")).toEqual([165.72,true]);
+  })
+  test('should return the years past the livespan on earth based on the estimated lifespan and the current age', () => {
+    let oldplanet = new Planet(1904,8,19,true);
+    expect(oldplanet.getTimeLeft("earth")).toEqual([39.91,true]);
   })
 
 });
