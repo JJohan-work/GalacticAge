@@ -34,6 +34,9 @@ describe('Planets', () => {
     let planet3 = new Planet(1999,1,1,true);
     expect(planet3.daysSince).toEqual(32);
   });
+  test("Should return a date object of the earth date for your next birthday on a planet", () => {
+    expect(planet.getNextBirthday("mercury")).toEqual(new Date(2021,1,24));
+  });
   test('should convert age to age on a given planet', () => {
     expect(planet.convertAge("mercury")).toEqual(88.68);
     expect(planet.convertAge("venus")).toEqual(34.72);
