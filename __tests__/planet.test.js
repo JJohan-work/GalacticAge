@@ -2,8 +2,6 @@ import Planet from '../src/js/planet.js'
 
 describe('Planets', () => {
 
-  let planet;
-
   beforeEach(() => {
     planet = new Planet(1999,8,19,true);
   })
@@ -17,14 +15,16 @@ describe('Planets', () => {
     expect(planet.years).toEqual(21.3591);
     expect(planet.lifeExpectancy).toEqual(76);
   });
-  test("Should return realtime year while test flag is set to false", () => {
+  test("Should return realtime timestamp while test flag is set to false", () => {
     let rightNow = new Date();
-    let year = rightNow.getFullYear();
-    expect(planet.getCurrentYear(false)).toEqual(year);
+    expect(planet.getCurrentTime(false)).toEqual(rightNow);
   });
-  test("Should return preset year value while test flag is set to true", () => {
-    expect(planet.getCurrentYear(true)).toEqual(1999);
+  test("Should return preset timestamp value while test flag is set to true", () => {
+    expect(planet.getCurrentTime(true)).toEqual(new Date(1999,8,19));
   });
+  test("Should get year from inputed Date object", () => {
+    expect(planet.getYear(planet.now).toEqual(2021));
+    });
 
   test('Creating the planet object with a birthday that has yet to happen this year', () => {
     let planet2 = new Planet(1999,5,24,true);
