@@ -26,15 +26,7 @@ export default class Planet {
     this.birthday = new Date(year,month,day);
     this.years = parseFloat(((this.now - this.birthday) * 0.00000000003154).toFixed(4));
     this.lifeExpectancy = parseInt(857315.91+(76.46281 - 2571795)/(1 + (this.years/21345.65)^2.236845));
-    this.planetAge;
     this.nextPlanetBirth;
-  }
-
-  getNextBirthday(planet) {
-    let daysSince = (this.now - this.birthday) % (this.yearCycle[planet] * (1000*60*60*24));
-    let daysRemaining = daysSince / (1000*60*60*24);
-    let nextBirthday = new Date(this.now.getFullYear(),this.now.getMonth(),this.now.getDate() + daysRemaining)
-    return nextBirthday;
   }
 
   getCurrentTime(test) {
@@ -53,7 +45,7 @@ export default class Planet {
     return parseFloat(((age * 365.25) / this.yearCycle[planet]).toFixed(2));
   }
 
-  convertNext(planet) {
+  getNextBirthday(planet) {
     //convert birthday into epoch time
     let nextBirthday = ((parseInt(this.convertAge(planet))+1) * this.yearCycle[planet]) * (1000*60*60*24); //calculates in milliseconds time from birth to next birthday on planet
     let dateWithTime = new Date(this.birthday.getTime() + nextBirthday);
@@ -62,18 +54,10 @@ export default class Planet {
   }
 
   getLifeSpan(planet) {
-    this.planetAge = this.convertAge(planet,this.lifeExpectancy);
+    return this.convertAge(planet,this.lifeExpectancy);
   }
 
   getTimeLeft(planet) {
-    return this.planetAge - this.convertAge(planet);
+    return this.getLifeSpan(planet) - this.convertAge(planet);
   }
 }
-
-// age: 40
-// life expectancy: 80
-// you have 40 years left to live
-
-// age: 90
-// life expectancy: 80
-// you have lived 10 years past your life expectancy 

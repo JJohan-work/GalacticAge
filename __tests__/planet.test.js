@@ -25,9 +25,6 @@ describe('Planets', () => {
   test("Should get year from inputed Date object", () => {
     expect(planet.getYear(planet.now)).toEqual(2021);
     });
-  test("Should return a date object of the earth date for your next birthday on a planet", () => {
-    expect(planet.getNextBirthday("mercury")).toEqual(new Date(2021,2,13));
-  });
   test('should convert age to age on a given planet', () => {
     expect(planet.convertAge("mercury")).toEqual(88.68);
     expect(planet.convertAge("venus")).toEqual(34.72);
@@ -50,25 +47,21 @@ describe('Planets', () => {
     let date6 = new Date(2029,2,4);
     let date7 = new Date(2083,8,26);
     let date8 = new Date(2164,6,5);
-    expect(planet.convertNext("mercury")).toEqual(date1);
-    expect(planet.convertNext("venus")).toEqual(date2);
-    expect(planet.convertNext("earth")).toEqual(date3);
-    expect(planet.convertNext("mars")).toEqual(date4);
-    expect(planet.convertNext("jupiter")).toEqual(date5);
-    expect(planet.convertNext("saturn")).toEqual(date6);
-    expect(planet.convertNext("uranus")).toEqual(date7);
-    expect(planet.convertNext("neptune")).toEqual(date8);
+    expect(planet.getNextBirthday("mercury")).toEqual(date1);
+    expect(planet.getNextBirthday("venus")).toEqual(date2);
+    expect(planet.getNextBirthday("earth")).toEqual(date3);
+    expect(planet.getNextBirthday("mars")).toEqual(date4);
+    expect(planet.getNextBirthday("jupiter")).toEqual(date5);
+    expect(planet.getNextBirthday("saturn")).toEqual(date6);
+    expect(planet.getNextBirthday("uranus")).toEqual(date7);
+    expect(planet.getNextBirthday("neptune")).toEqual(date8);
   })
   test('should save estimated lifespan of user based on age and planet', () => {
-    planet.getLifeSpan("mercury")
-    expect(planet.planetAge).toEqual(315.55);
+    expect(planet.getLifeSpan("mercury")).toEqual(315.55);
   })
   test('should return the years left to live on a planet based on the estimated lifespan and the current age, can only be called after getting getLifeSpan', () => {
-    planet.getLifeSpan("mercury");
     expect(planet.getTimeLeft("mercury")).toEqual(226.87);
-    planet.getLifeSpan("earth");
     expect(planet.getTimeLeft("earth")).toEqual(54.64);
-    planet.getLifeSpan("saturn");
     expect(planet.getTimeLeft("saturn")).toEqual(1.85);
   })
 
