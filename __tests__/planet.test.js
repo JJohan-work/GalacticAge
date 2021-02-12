@@ -25,17 +25,8 @@ describe('Planets', () => {
   test("Should get year from inputed Date object", () => {
     expect(planet.getYear(planet.now)).toEqual(2021);
     });
-
-  test('Creating the planet object with a birthday that has yet to happen this year', () => {
-    let planet2 = new Planet(1999,5,24,true);
-    expect(planet2.daysSince).toEqual(254);
-  });
-  test('Creating the planet object with a birthday that has already happened this year', () => {
-    let planet3 = new Planet(1999,1,1,true);
-    expect(planet3.daysSince).toEqual(32);
-  });
   test("Should return a date object of the earth date for your next birthday on a planet", () => {
-    expect(planet.getNextBirthday("mercury")).toEqual(new Date(2021,1,24));
+    expect(planet.getNextBirthday("mercury")).toEqual(new Date(2021,2,13));
   });
   test('should convert age to age on a given planet', () => {
     expect(planet.convertAge("mercury")).toEqual(88.68);

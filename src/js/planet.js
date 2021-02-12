@@ -25,15 +25,16 @@ export default class Planet {
     this.currentYear = this.getYear(this.now);
     this.birthday = new Date(year,month,day);
     this.years = parseFloat(((this.now - this.birthday) * 0.00000000003154).toFixed(4));
-
-    let check = new Date(this.currentYear,month,day);
-    let check2 = (check - this.now > 0 ? this.currentYear-1 : this.currentYear);
-    let lastbirthday = new Date(check2,month,day);
-    this.daysSince = parseInt((this.now - lastbirthday) / (1000*60*60*24));
     this.lifeExpectancy = parseInt(857315.91+(76.46281 - 2571795)/(1 + (this.years/21345.65)^2.236845));
-
     this.planetAge;
     this.nextPlanetBirth;
+  }
+
+  getNextBirthday(planet) {
+    let daysSince = (this.now - this.birthday) % (this.yearCycle[planet] * (1000*60*60*24));
+    let daysRemaining = daysSince / (1000*60*60*24);
+    let nextBirthday = new Date(this.now.getFullYear(),this.now.getMonth(),this.now.getDate() + daysRemaining)
+    return nextBirthday;
   }
 
   getCurrentTime(test) {
