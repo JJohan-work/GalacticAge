@@ -1,7 +1,7 @@
 import Planet from '../src/js/planet.js'
 
 describe('Planets', () => {
-
+  let planet;
   beforeEach(() => {
     planet = new Planet(1999,8,19,true);
   })
@@ -20,10 +20,10 @@ describe('Planets', () => {
     expect(planet.getCurrentTime(false)).toEqual(rightNow);
   });
   test("Should return preset timestamp value while test flag is set to true", () => {
-    expect(planet.getCurrentTime(true)).toEqual(new Date(1999,8,19));
+    expect(planet.getCurrentTime(true)).toEqual(new Date(2021,2,5));
   });
   test("Should get year from inputed Date object", () => {
-    expect(planet.getYear(planet.now).toEqual(2021));
+    expect(planet.getYear(planet.now)).toEqual(2021);
     });
 
   test('Creating the planet object with a birthday that has yet to happen this year', () => {

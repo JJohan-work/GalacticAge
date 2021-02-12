@@ -21,26 +21,30 @@ export default class Planet {
       "neptune":"neptunian"
     }; //for when refering to planetary units i.e. jovian years
 
-    let n;
-    if (test) {n = new Date(2021,2,5);} //sets current date as a static value for jest testing
-    else {n = new Date();} //sets current date as date at runtime for normal operation
-    this.currentYear = n.getFullYear();
-
+    this.now = this.getCurrentTime(test);
+    this.currentYear = this.getYear(this.now);
     this.birthday = new Date(year,month,day);
-    this.years = parseFloat(((n - this.birthday) * 0.00000000003154).toFixed(4));
+    this.years = parseFloat(((this.now - this.birthday) * 0.00000000003154).toFixed(4));
 
     let check = new Date(this.currentYear,month,day);
-    let check2 = (check - n > 0 ? this.currentYear-1 : this.currentYear);
+    let check2 = (check - this.now > 0 ? this.currentYear-1 : this.currentYear);
     let lastbirthday = new Date(check2,month,day);
-    this.daysSince = parseInt((n - lastbirthday) / (1000*60*60*24));
+    this.daysSince = parseInt((this.now - lastbirthday) / (1000*60*60*24));
     this.lifeExpectancy = parseInt(857315.91+(76.46281 - 2571795)/(1 + (this.years/21345.65)^2.236845));
 
     this.planetAge;
     this.nextPlanetBirth;
   }
 
-  getCurrentYear(test) {
-    
+  getCurrentTime(test) {
+    let n;
+    if (test) n = new Date(2021,2,5); //sets current date as a static value for jest testing
+    else n = new Date(); //sets current date as date at runtime for normal operation
+    return n;
+  }
+
+  getYear(date) {
+    return date.getFullYear();
   }
 
 
