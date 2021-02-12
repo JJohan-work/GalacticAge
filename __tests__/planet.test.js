@@ -38,26 +38,37 @@ describe('Planets', () => {
   test('should convert age to age on mercury', () => {
     expect(planet.convertAge("mercury")).toEqual(88.68);
   })
-  test('should find next earth date of birthday on a given planet', () => {
-    let date1 = new Date(2021,1,24);
-    let date2 = new Date(2021,2,31);
-    let date3 = new Date(2021,8,18);
-    let date4 = new Date(2022,3,14);
-    let date5 = new Date(2023,5,10);
-    let date6 = new Date(2029,2,4);
-    let date7 = new Date(2083,8,26);
-    let date8 = new Date(2164,6,5);
-    expect(planet.getNextBirthday("mercury")).toEqual(date1);
-    expect(planet.getNextBirthday("venus")).toEqual(date2);
-    expect(planet.getNextBirthday("earth")).toEqual(date3);
-    expect(planet.getNextBirthday("mars")).toEqual(date4);
-    expect(planet.getNextBirthday("jupiter")).toEqual(date5);
-    expect(planet.getNextBirthday("saturn")).toEqual(date6);
-    expect(planet.getNextBirthday("uranus")).toEqual(date7);
-    expect(planet.getNextBirthday("neptune")).toEqual(date8);
+  test('should find next earth date of birthday on mercury', () => {
+    let date = new Date(2021,1,24);
+    expect(planet.getNextBirthday("mercury")).toEqual(date);
   })
-  test('should save estimated lifespan of user based on age and planet', () => {
-    expect(planet.getLifeSpan("mercury")).toEqual(315.55);
+    test('should find next earth date of birthday on venus', () => {
+    let date = new Date(2021,2,31);
+    expect(planet.getNextBirthday("venus")).toEqual(date);
+  })
+    test('should find next earth date of birthday on earth', () => {
+    let date = new Date(2021,8,18);
+    expect(planet.getNextBirthday("earth")).toEqual(date);
+  })
+    test('should find next earth date of birthday on mars', () => {
+    let date = new Date(2022,3,14);
+    expect(planet.getNextBirthday("mars")).toEqual(date);
+  })
+    test('should find next earth date of birthday on jupiter', () => {
+    let date = new Date(2023,5,10);
+    expect(planet.getNextBirthday("jupiter")).toEqual(date);
+  })
+    test('should find next earth date of birthday on saturn', () => {
+    let date = new Date(2029,2,4);
+    expect(planet.getNextBirthday("saturn")).toEqual(date);
+  })
+    test('should find next earth date of birthday on uranus', () => {
+    let date = new Date(2083,8,26);
+    expect(planet.getNextBirthday("uranus")).toEqual(date);
+  })
+    test('should find next earth date of birthday on neptune', () => {
+    let date = new Date(2164,6,5);
+    expect(planet.getNextBirthday("neptune")).toEqual(date);
   })
   test('should return the years left to live on a planet based on the estimated lifespan and the current age, can only be called after getting getLifeSpan', () => {
     expect(planet.getTimeLeft("mercury")).toEqual(226.87);
