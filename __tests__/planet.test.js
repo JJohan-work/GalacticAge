@@ -10,16 +10,21 @@ describe('Planets', () => {
 
   test('Should create a planet object with the values of the current Year, birthday, years since birth and days since last birthday saved', () => {
     let date = new Date(1999,8,19);
-    expect(planet.currentYear).toEqual(2021);
+    let rightNow = new Date();
+    let year = rightNow.getFullYear();
+    expect(planet.currentYear).toEqual(year);
     expect(planet.birthday).toEqual(date);
     expect(planet.years).toEqual(21.3591);
     expect(planet.lifeExpectancy).toEqual(76);
   });
-  test("Should set currentYear to equal the current year when the test flag is set to false", () => {
-    let planet1 = new Planet(1999,5,24);
+  test("Should return realtime year while test flag is set to false", () => {
     let rightNow = new Date();
-    expect(planet1.currentYear).toEqual(rightNow.getFullYear());
-  })
+    let year = rightNow.getFullYear();
+    expect(planet.getCurrentYear(false)).toEqual(year);
+  });
+  test("Should return preset year value while test flag is set to true", () => {
+    expect(planet.getCurrentYear(true)).toEqual(1999);
+  });
 
   test('Creating the planet object with a birthday that has yet to happen this year', () => {
     let planet2 = new Planet(1999,5,24,true);
@@ -39,6 +44,9 @@ describe('Planets', () => {
     expect(planet.convertAge("uranus")).toEqual(0.25);
     expect(planet.convertAge("neptune")).toEqual(0.13);
   })
+  test('should convert age to age on mercury', () => {
+    expect(planet.convertAge("mercury")).toEqual(88.68);
+  })
   test('should find next earth date of birthday on a given planet', () => {
     let date1 = new Date(2021,1,24);
     let date2 = new Date(2021,2,31);
@@ -57,17 +65,17 @@ describe('Planets', () => {
     expect(planet.convertNext("uranus")).toEqual(date7);
     expect(planet.convertNext("neptune")).toEqual(date8);
   })
-    test('should save estimated lifespan of user based on age and planet', () => {
-      planet.getLifeSpan("mercury")
-      expect(planet.planetAge).toEqual(315.55);
-    })
-    test('should return the years left to live on a planet based on the estimated lifespan and the current age, can only be called after getting getLifeSpan', () => {
-      planet.getLifeSpan("mercury");
-      expect(planet.getTimeLeft("mercury")).toEqual(226.87);
-      planet.getLifeSpan("earth");
-      expect(planet.getTimeLeft("earth")).toEqual(54.64);
-      planet.getLifeSpan("saturn");
-      expect(planet.getTimeLeft("saturn")).toEqual(1.85);
-    })
+  test('should save estimated lifespan of user based on age and planet', () => {
+    planet.getLifeSpan("mercury")
+    expect(planet.planetAge).toEqual(315.55);
+  })
+  test('should return the years left to live on a planet based on the estimated lifespan and the current age, can only be called after getting getLifeSpan', () => {
+    planet.getLifeSpan("mercury");
+    expect(planet.getTimeLeft("mercury")).toEqual(226.87);
+    planet.getLifeSpan("earth");
+    expect(planet.getTimeLeft("earth")).toEqual(54.64);
+    planet.getLifeSpan("saturn");
+    expect(planet.getTimeLeft("saturn")).toEqual(1.85);
+  })
 
 });

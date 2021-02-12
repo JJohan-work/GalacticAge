@@ -1,7 +1,25 @@
 export default class Planet {
   constructor(year,month,day,test=false) {
-    this.yearCycle = {"mercury":87.97,"venus":224.7,"earth":365.25,"mars":686.97,"jupiter":4332.82,"saturn":10759.26,"uranus":30688.48,"neptune":60190}; //days in a planetary year
-    this.belongTo = {"mercury":"mercurian","venus":"venusian","earth":"earthen","mars":"martian","jupiter":"jovian","saturn":"saturnian","uranus":"uranian","neptune":"neptunian"}; //for when refering to planetary units i.e. jovian years
+    this.yearCycle = {
+      "mercury":87.97,
+      "venus":224.7,
+      "earth":365.25,
+      "mars":686.97,
+      "jupiter":4332.82,
+      "saturn":10759.26,
+      "uranus":30688.48,
+      "neptune":60190
+    }; //days in a planetary year
+    this.belongTo = {
+      "mercury":"mercurian",
+      "venus":"venusian",
+      "earth":"earthen",
+      "mars":"martian",
+      "jupiter":"jovian",
+      "saturn":"saturnian",
+      "uranus":"uranian",
+      "neptune":"neptunian"
+    }; //for when refering to planetary units i.e. jovian years
 
     let n;
     if (test) {n = new Date(2021,2,5);} //sets current date as a static value for jest testing
@@ -21,6 +39,11 @@ export default class Planet {
     this.nextPlanetBirth;
   }
 
+  getCurrentYear(test) {
+    
+  }
+
+
   convertAge(planet,age=this.years) {
     return parseFloat(((age * 365.25) / this.yearCycle[planet]).toFixed(2));
   }
@@ -30,7 +53,7 @@ export default class Planet {
     let nextBirthday = ((parseInt(this.convertAge(planet))+1) * this.yearCycle[planet]) * (1000*60*60*24); //calculates in milliseconds time from birth to next birthday on planet
     let dateWithTime = new Date(this.birthday.getTime() + nextBirthday);
     this.nextPlanetBirth = new Date(dateWithTime.getFullYear(),dateWithTime.getMonth(),dateWithTime.getDate());
-    return this.nextPlanetBirth //stripes datewithTime of its timestamp
+    return this.nextPlanetBirth //strips datewithTime of its timestamp
   }
 
   getLifeSpan(planet) {
@@ -41,3 +64,11 @@ export default class Planet {
     return this.planetAge - this.convertAge(planet);
   }
 }
+
+// age: 40
+// life expectancy: 80
+// you have 40 years left to live
+
+// age: 90
+// life expectancy: 80
+// you have lived 10 years past your life expectancy 
