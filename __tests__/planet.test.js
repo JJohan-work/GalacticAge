@@ -25,19 +25,34 @@ describe('Planets', () => {
   test("Should get year from inputed Date object", () => {
     expect(planet.getYear(planet.now)).toEqual(2021);
     });
-  test('should convert age to age on a given planet', () => {
-    expect(planet.convertAge("mercury")).toEqual(88.68);
-    expect(planet.convertAge("venus")).toEqual(34.72);
-    expect(planet.convertAge("earth")).toEqual(21.36);
-    expect(planet.convertAge("mars")).toEqual(11.36);
-    expect(planet.convertAge("jupiter")).toEqual(1.8);
-    expect(planet.convertAge("saturn")).toEqual(0.73);
-    expect(planet.convertAge("uranus")).toEqual(0.25);
-    expect(planet.convertAge("neptune")).toEqual(0.13);
-  })
+
+
   test('should convert age to age on mercury', () => {
     expect(planet.convertAge("mercury")).toEqual(88.68);
+    });
+    test('should convert age to age on venus', () => {
+    expect(planet.convertAge("venus")).toEqual(34.72);
+    });
+    test('should convert age to age on earth', () => {
+    expect(planet.convertAge("earth")).toEqual(21.36);
+  });
+  test('should convert age to age on mars', () => {
+    expect(planet.convertAge("mars")).toEqual(11.36);
+  });
+  test('should convert age to age on jupiter', () => {
+    expect(planet.convertAge("jupiter")).toEqual(1.8);
+  });
+  test('should convert age to age on saturn', () => {
+    expect(planet.convertAge("saturn")).toEqual(0.73);
+  });
+  test('should convert age to age on uranus', () => {
+    expect(planet.convertAge("uranus")).toEqual(0.25);
+  });
+  test('should convert age to age on neptune', () => {
+    expect(planet.convertAge("neptune")).toEqual(0.13);
   })
+  
+
   test('should find next earth date of birthday on mercury', () => {
     let date = new Date(2021,1,24);
     expect(planet.getNextBirthday("mercury")).toEqual(date);
@@ -70,6 +85,7 @@ describe('Planets', () => {
     let date = new Date(2164,6,5);
     expect(planet.getNextBirthday("neptune")).toEqual(date);
   })
+
   test('should return the years left to live on a planet based on the estimated lifespan and the current age, can only be called after getting getLifeSpan', () => {
     expect(planet.getTimeLeft("mercury")).toEqual(226.87);
     expect(planet.getTimeLeft("earth")).toEqual(54.64);
