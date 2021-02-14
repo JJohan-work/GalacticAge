@@ -2,17 +2,55 @@ import Planet from '../src/js/planet.js'
 
 describe('Planets', () => {
   let planet;
+  let realplanet;
   beforeEach(() => {
     planet = new Planet(1999,8,19,true);
+    realplanet = new Planet(1999,8,19,false);
   })
-
+  test('should create a replacement cypher for planet names to earth days in a planet year', () => {
+    expect(planet.yearCycle).toEqual({
+      "mercury":87.97,
+      "venus":224.7,
+      "earth":365.25,
+      "mars":686.97,
+      "jupiter":4332.82,
+      "saturn":10759.26,
+      "uranus":30688.48,
+      "neptune":60190
+    });
+  });
+    test('should create a name replacement cypher for planets and planet units', () => {
+    expect(planet.belongTo).toEqual({
+      "mercury":"mercurian",
+      "venus":"venusian",
+      "earth":"earthen",
+      "mars":"martian",
+      "jupiter":"jovian",
+      "saturn":"saturnian",
+      "uranus":"uranian",
+      "neptune":"neptunian"
+    });
+  });
+  test('should set now of planet object to the test date while test flag is true', () => {
+    let date = new Date(2021,2,5);
+    expect(planet.now).toEqual(date);
+  });
+  test(`should set now of planet object to the realtime date while test flag is false`, () => {
+    let date = new Date();
+    expect(realplanet.now).toEqual(date);
+  });
+  test('should set currentYear of planet object to current realtime year when test flag is false', () => {
+    let rightNow = new Date();
+    expect(planet.currentYear).toEqual(rightNow.getFullYear());
+  });
   test('Should create a planet object with the values of the current Year, birthday, years since birth and days since last birthday saved', () => {
     let date = new Date(1999,8,19);
-    let rightNow = new Date();
-    let year = rightNow.getFullYear();
-    expect(planet.currentYear).toEqual(year);
     expect(planet.birthday).toEqual(date);
+  });
+    test('Should set years of planet object to a floating point number of the years since the given birthday', () => {
     expect(planet.years).toEqual(21.3591);
+  });
+    test(`Should set lifeExpectancy of planet object with the average life expectancy calculated from given birthday`, () => {
     expect(planet.lifeExpectancy).toEqual(76);
   });
   test("Should return realtime timestamp while test flag is set to false", () => {
@@ -25,8 +63,6 @@ describe('Planets', () => {
   test("Should get year from inputed Date object", () => {
     expect(planet.getYear(planet.now)).toEqual(2021);
     });
-
-
   test('should convert age to age on mercury', () => {
     expect(planet.convertAge("mercury")).toEqual(88.68);
     });
