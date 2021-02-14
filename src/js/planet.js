@@ -22,7 +22,7 @@ export default class Planet {
     }; //for when refering to planetary units i.e. jovian years
 
     this.now = this.getCurrentTime(test);
-    this.currentYear = this.getYear(this.now);
+    this.currentYear = this.now.getFullYear();
     this.birthday = new Date(year,month,day);
     this.years = parseFloat(((this.now - this.birthday) * 0.00000000003154).toFixed(4));
     this.lifeExpectancy = parseInt(857315.91+(76.46281 - 2571795)/(1 + (this.years/21345.65)^2.236845));
@@ -34,11 +34,7 @@ export default class Planet {
     else n = new Date(); //sets current date as date at runtime for normal operation
     return n;
   }
-
-  getYear(date) {
-    return date.getFullYear();
-  }
-
+  
   convertAge(planet,age=this.years) {
     return parseFloat(((age * 365.25) / this.yearCycle[planet]).toFixed(2));
   }

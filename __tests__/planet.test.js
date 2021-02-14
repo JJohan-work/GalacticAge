@@ -67,15 +67,6 @@ describe('get Current Time', () => {
     expect(planet.getCurrentTime(true)).toEqual(new Date(2021,2,5));
   });
 });
-  describe('get Year', () => {
-    let planet;
-    beforeEach(() => {
-      planet = new Planet(1999,8,19,true);
-    })
-  test("Should get year from inputed Date object", () => {
-    expect(planet.getYear(planet.now)).toEqual(2021);
-    });
-  });
   describe('Convert Age', () => {
     let planet;
     beforeEach(() => {
@@ -144,7 +135,7 @@ describe('get Current Time', () => {
     expect(planet.getNextBirthday("neptune")).toEqual(date);
   })
   });
-  describe('Get Time Left', () => {
+  describe('Get Time Left if age is under lifespan', () => {
     let planet;
     beforeEach(() => {
       planet = new Planet(1999,8,19,true);
@@ -173,13 +164,35 @@ describe('get Current Time', () => {
   test('should return the years left to live on neptune based on the estimated lifespan and the current age', () => {
     expect(planet.getTimeLeft("neptune")).toEqual([0.33,false]);
   })
+});
+  describe('Get Time left if age is over lifespan', () => {
+    let oldplanet;
+    beforeEach(() => {
+      oldplanet = new Planet(1904,8,19,true);
+    })
    test('should return the years past the livespan on mercury based on the estimated lifespan and the current age', () => {
-    let oldplanet = new Planet(1904,8,19,true);
     expect(oldplanet.getTimeLeft("mercury")).toEqual([165.72,true]);
   })
+  test('should return the years past the livespan on venus based on the estimated lifespan and the current age', () => {
+    expect(oldplanet.getTimeLeft("venus")).toEqual([64.88,true]);
+  })
   test('should return the years past the livespan on earth based on the estimated lifespan and the current age', () => {
-    let oldplanet = new Planet(1904,8,19,true);
     expect(oldplanet.getTimeLeft("earth")).toEqual([39.91,true]);
+  })
+  test('should return the years past the livespan on mars based on the estimated lifespan and the current age', () => {
+    expect(oldplanet.getTimeLeft("mars")).toEqual([21.22,true]);
+  })
+  test('should return the years past the livespan on jupiter based on the estimated lifespan and the current age', () => {
+    expect(oldplanet.getTimeLeft("jupiter")).toEqual([3.36,true]);
+  })
+  test('should return the years past the livespan on saturn based on the estimated lifespan and the current age', () => {
+    expect(oldplanet.getTimeLeft("saturn")).toEqual([1.35,true]);
+  })
+  test('should return the years past the livespan on uranus based on the estimated lifespan and the current age', () => {
+    expect(oldplanet.getTimeLeft("uranus")).toEqual([0.48,true]);
+  })
+  test('should return the years past the livespan on neptune based on the estimated lifespan and the current age', () => {
+    expect(oldplanet.getTimeLeft("neptune")).toEqual([0.24,true]);
   })
 
 });
