@@ -1,6 +1,6 @@
 import Planet from '../src/js/planet.js'
 
-describe('Planets', () => {
+describe('Planet Constructor', () => {
   let planet;
   let realplanet;
   beforeEach(() => {
@@ -53,6 +53,12 @@ describe('Planets', () => {
     test(`Should set lifeExpectancy of planet object with the average life expectancy calculated from given birthday`, () => {
     expect(planet.lifeExpectancy).toEqual(76);
   });
+});
+describe('get Current Time', () => {
+  let planet;
+  beforeEach(() => {
+    planet = new Planet(1999,8,19,true);
+  })
   test("Should return realtime timestamp while test flag is set to false", () => {
     let rightNow = new Date();
     expect(planet.getCurrentTime(false)).toEqual(rightNow);
@@ -60,9 +66,21 @@ describe('Planets', () => {
   test("Should return preset timestamp value while test flag is set to true", () => {
     expect(planet.getCurrentTime(true)).toEqual(new Date(2021,2,5));
   });
+});
+  describe('get Year', () => {
+    let planet;
+    beforeEach(() => {
+      planet = new Planet(1999,8,19,true);
+    })
   test("Should get year from inputed Date object", () => {
     expect(planet.getYear(planet.now)).toEqual(2021);
     });
+  });
+  describe('Convert Age', () => {
+    let planet;
+    beforeEach(() => {
+      planet = new Planet(1999,8,19,true);
+    })
   test('should convert age to age on mercury', () => {
     expect(planet.convertAge("mercury")).toEqual(88.68);
     });
@@ -87,8 +105,12 @@ describe('Planets', () => {
   test('should convert age to age on neptune', () => {
     expect(planet.convertAge("neptune")).toEqual(0.13);
   })
-
-
+  });
+  describe('get Next Birthday', () => {
+    let planet;
+    beforeEach(() => {
+      planet = new Planet(1999,8,19,true);
+    })
   test('should find next earth date of birthday on mercury', () => {
     let date = new Date(2021,1,24);
     expect(planet.getNextBirthday("mercury")).toEqual(date);
@@ -121,7 +143,12 @@ describe('Planets', () => {
     let date = new Date(2164,6,5);
     expect(planet.getNextBirthday("neptune")).toEqual(date);
   })
-
+  });
+  describe('Get Time Left', () => {
+    let planet;
+    beforeEach(() => {
+      planet = new Planet(1999,8,19,true);
+    })
   test('should return the years left to live on mercury based on the estimated lifespan and the current age', () => {
     expect(planet.getTimeLeft("mercury")).toEqual([226.87,false]);
   })
