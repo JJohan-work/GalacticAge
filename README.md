@@ -15,7 +15,7 @@
 * _Webpack_
 
 ## Description
-Webpack build of program can be viewed [Here](https://jjohan-work.github.io/GalacticAge/), hosted on the gh_pages branch of repo.
+Webpack build of program can be viewed [Here](https://jjohan-work.github.io/GalacticAge/), hosted on the gh_pages branch of repo.   
 This program takes your birthdate on Earth and converts it to your age on other planets in the solar system. This project uses TDD and an enviroment built with npm, jest, and webpack. A user interface exists for this program and can be accesed with index.html after building. Planet object is used for all functions and variable storage for converting ages to other planets.
 
 ## Setup/Installation
