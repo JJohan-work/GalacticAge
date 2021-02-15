@@ -4,7 +4,59 @@
   <title>Galactic Converter</title>
 </head>
 <body>
-  <form id="age">
+  <h1>Galactic Age Converter</h1>
+  <div id="birthdaySelection">
+    <h3>Enter Age</h3>
+    <form>
+        <div id="age">
+          <label for="year">Year</label>
+          <input type="number" id="year" required>
+          <label for="month">Month</label>
+          <input type="number" id="month" required>
+          <label for="day">Day</label>
+          <input type="number" id="day" required>
+        </div>
+        <button type="submit">Calculate</button>
+    </form>
+  </div>
+  <div id="planetSelection">
+    <h3>Select Planet</h3>
+    <div id="planets">
+      <div id="planetFadeout">
+        <div id="planet0" class="planet"></div>
+        <div id="planet1" class="planet"></div>
+        <div id="planet2" class="planet"></div>
+        <div id="planet3" class="planet"></div>
+        <div id="planet4" class="planet"></div>
+      </div>
+      <div id="pHiderBefore"></div>
+      <div id="pHiderAfter"></div>
+    </div>
+  </div>
+  <div id="output">
+    <h3 id="planetSelected">Selected Planet</h3>
+    <div id="ageout">
+      <h3>Age</h3>
+      <p></p>
+    </div>
+    <div id="nextBirthday">
+      <h3>Next Birthday</h3>
+      <p></p>
+    </div>
+    <div id="lifespan">
+      <h3>Estimated Life Span</h3>
+      <p></p>
+    </div>
+    <div id="timeLeft">
+      <h3>Time Left</h3>
+      <p></p>
+    </div>
+  </div>
+</body>
+</html>
+
+
+  <!-- <form id="age">
     <div>
       <label for="year">Year</label>
       <input type="number" id="year">
@@ -26,10 +78,3 @@
       <option value="neptune">Neptune</option>
     </select>
     <button type="submit">Submit</button>
-  </form>
-  <div id="output">
-    <h3></h3>
-    <p></p>
-  </div>
-</body>
-</html>S
