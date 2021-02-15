@@ -33,11 +33,12 @@ body {
 }
 
 #planets {
-  width: 100vw;
+  width: 95vw;
   margin-left: auto;
   margin-right: auto;
   height:180px;
   position: relative;
+  overflow: hidden;
 }
 
 #planetFadeout {
