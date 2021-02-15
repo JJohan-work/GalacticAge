@@ -61,7 +61,6 @@ export default class Display {
   getURL(number) {
     return this.imageSelector[number];
   }
-
 }
 
 
