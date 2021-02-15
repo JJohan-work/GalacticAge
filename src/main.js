@@ -34,18 +34,18 @@ function drawPlanetSelector(display) {
 
 function drawOutput(planet, display) {
   const planetName = display.getPlanet();
-  $("#output>#planetSelected").html(`Planet: ${planetName}`);
+  $("#planetSelected").html(`Planet: ${planetName}`);
 
-  $("#output>#ageout>p").html(`${planet.convertAge(planetName)} ${display.getUnit()} years`);
+  $("#ageout>p").html(`${planet.convertAge(planetName)} ${display.getUnit()} years`);
 
-  $("#output>#nextBirthday>h3").html(`Next Birthday on ${display.getPlanet()}`);
-  $("#output>#nextBirthday>p").html(String(planet.getNextBirthday(planetName)).slice(0,15));
+  $("#nextBirthday>h3").html(`Next Birthday on ${display.getPlanet()}`);
+  $("#nextBirthday>p").html(String(planet.getNextBirthday(planetName)).slice(0,15));
 
-  $("#output>#lifespan>p").html(`${planet.getLifeSpan(planetName)} ${display.getUnit()} years`);
+  $("#lifespan>p").html(`${planet.getLifeSpan(planetName)} ${display.getUnit()} years`);
 
   const expectancy = planet.getTimeLeft(planetName);
-  $("#output>#timeLeft>h3").html(`Years ${expectancy[1] ? "Over" : "Under"} Lifespan`);
-  $("#output>#timeLeft>p").html(`${expectancy[0]} ${display.getUnit()} years`);
+  $("#timeLeft>h3").html(`Years ${expectancy[1] ? "Over" : "Under"} Lifespan`);
+  $("#timeLeft>p").html(`${expectancy[0]} ${display.getUnit()} years`);
 }
 
 function main() {
