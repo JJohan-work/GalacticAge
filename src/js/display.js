@@ -30,14 +30,14 @@ export default class Display {
       "7":"neptune"
     };
     this.belongTo = {
-      "0":"mercurian",
-      "1":"venusian",
-      "2":"earthen",
-      "3":"martian",
-      "4":"jovian",
-      "5":"saturnian",
-      "6":"uranian",
-      "7":"neptunian"
+      "0":"Mercurian",
+      "1":"Venusian",
+      "2":"Earth",
+      "3":"Martian",
+      "4":"Jovian",
+      "5":"Saturnian",
+      "6":"Uranian",
+      "7":"Neptunian"
     };
     this.position = 2;
   }
@@ -48,6 +48,10 @@ export default class Display {
     } else if (!direction && this.position > 0) {
       this.position = this.position - 1;
     }
+  }
+
+  getUnit() {
+    return this.belongTo[this.position];
   }
 
   getPlanet() {
