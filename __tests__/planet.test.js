@@ -19,18 +19,6 @@ describe('Planet Constructor', () => {
       "neptune":60190
     });
   });
-    test('should create a name replacement cypher for planets and planet units', () => {
-    expect(planet.belongTo).toEqual({
-      "mercury":"mercurian",
-      "venus":"venusian",
-      "earth":"earthen",
-      "mars":"martian",
-      "jupiter":"jovian",
-      "saturn":"saturnian",
-      "uranus":"uranian",
-      "neptune":"neptunian"
-    });
-  });
   test('should set now of planet object to the test date while test flag is true', () => {
     let date = new Date(2021,2,5);
     expect(planet.now).toEqual(date);

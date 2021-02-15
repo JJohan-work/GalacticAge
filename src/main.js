@@ -39,7 +39,10 @@ function drawOutput(planet, display) {
   $("#output>#ageout>p").html(planet.convertAge(planetName));
   $("#output>#nextBirthday>p").html(planet.getNextBirthday(planetName));
   $("#output>#lifespan>p").html(planet.getLifeSpan(planetName));
-  $("#output>#timeLeft>p").html();
+
+  const expectancy = planet.getTimeLeft(planetName);
+  $("#output>#timeLeft>h3").html(`Years ${expectancy[1] ? "Over" : "Under"} Lifespan`);
+  $("#output>#timeLeft>p").html(expectancy[0]);
 }
 
 function main() {
@@ -52,7 +55,7 @@ function main() {
 
   $("form").on("submit", (event) => {
     event.preventDefault();
-    planet = new Planet($("#year").val(),$("#month").val(),$("#day").val());
+    planet = new Planet($("#year").val(),$("#month").val()-1,$("#day").val());
     drawOutput(planet,display);
     $("#planetSelection").show();
     $("#output").show();

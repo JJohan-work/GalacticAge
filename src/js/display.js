@@ -29,6 +29,16 @@ export default class Display {
       "6":"uranus",
       "7":"neptune"
     };
+    this.belongTo = {
+      "0":"mercurian",
+      "1":"venusian",
+      "2":"earthen",
+      "3":"martian",
+      "4":"jovian",
+      "5":"saturnian",
+      "6":"uranian",
+      "7":"neptunian"
+    };
     this.position = 2;
   }
 
@@ -49,3 +59,17 @@ export default class Display {
   }
 
 }
+
+
+
+// test('should create a name replacement cypher for planets and planet units', () => {
+//   expect(planet.belongTo).toEqual({
+//     "mercury":"mercurian",
+//     "venus":"venusian",
+//     "earth":"earthen",
+//     "mars":"martian",
+//     "jupiter":"jovian",
+//     "saturn":"saturnian",
+//     "uranus":"uranian",
+//     "neptune":"neptunian"
+//   });

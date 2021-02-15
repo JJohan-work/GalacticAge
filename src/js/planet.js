@@ -10,16 +10,6 @@ export default class Planet {
       "uranus":30688.48,
       "neptune":60190
     }; //days in a planetary year
-    this.belongTo = {
-      "mercury":"mercurian",
-      "venus":"venusian",
-      "earth":"earthen",
-      "mars":"martian",
-      "jupiter":"jovian",
-      "saturn":"saturnian",
-      "uranus":"uranian",
-      "neptune":"neptunian"
-    }; //for when refering to planetary units i.e. jovian years
 
     this.now = this.getCurrentTime(test);
     this.currentYear = this.now.getFullYear();
@@ -34,7 +24,7 @@ export default class Planet {
     else n = new Date(); //sets current date as date at runtime for normal operation
     return n;
   }
-  
+
   convertAge(planet,age=this.years) {
     return parseFloat(((age * 365.25) / this.yearCycle[planet]).toFixed(2));
   }
